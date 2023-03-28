@@ -399,7 +399,7 @@
 
               <div class="service__list-wrapper">
                 <div class="row">
-                  
+
                   <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                     <div class="service__list">
                       <a href="service-details.html">
@@ -594,7 +594,7 @@
                         </div>
                       </a>
 
-                      
+
                     </div>
                   </div>
                 </div>
@@ -1067,6 +1067,28 @@
           </div>
         </footer>
         <!-- Footer area end -->
+
+        <style>
+          .red {
+            color: red;
+          }
+        </style>
+
+    <div id="app">
+  <h1 v-bind:class="{'red': isRed}">{{ message }}</h1>
+  <button v-on:click="toggleRed">Toggle Red</button>
+  <br>
+  <ul>
+    <li v-for="user in users">
+      {{ user.name }}
+    </li>
+  </ul>
+  <br>
+  <button v-on:click="printApiData">Print Api DATA</button>
+
+</div>
+
+
       </div>
     </div>
 
@@ -1085,5 +1107,34 @@
     <script src="assets/js/vanilla-tilt.js"></script>
     <script src="assets/js/jquery.meanmenu.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+
+      const { createApp } = Vue
+
+        createApp({
+          data() {
+            return {
+              message: 'Hello Vue!',
+              isRed: false,
+              users: []
+            }
+          },
+          methods: {
+            toggleRed: function () {
+              this.isRed = !this.isRed;
+            },
+            printApiData: function () {
+              fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response => response.json())
+                .then(json => {
+                  console.log(json);
+                  this.users = json;
+                })
+            }
+          }
+        }).mount('#app')
+    </script>
   </body>
 </html>
