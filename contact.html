@@ -117,7 +117,7 @@
               <li>
                 <a href="service.html">Service</a>
               </li>
-              
+
               <li><a href="blog.html">blog</a>
               </li>
               <li><a href="contact.html">contact</a></li>
@@ -185,30 +185,37 @@
               </div>
               <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-7">
                 <div class="contact__form">
-                  <form action="assets/mail.php" method="POST">
+                  <form onsubmit="handleSubmit(event)">
                     <div class="row g-3">
                       <div class="col-xxl-6 col-xl-6 col-12">
                         <input type="text" name="name" placeholder="Name *">
+                        <div style="color:red;" class="error_name"></div>
                       </div>
                       <div class="col-xxl-6 col-xl-6 col-12">
                         <input type="email" name="email" placeholder="Email *">
+                        <div style="color:red;" class="error_email"></div>
                       </div>
                     </div>
                     <div class="row g-3">
                       <div class="col-xxl-6 col-xl-6 col-12">
                         <input type="tel" name="phone" placeholder="Phone">
+                        <div style="color:red;" class="error_phone"></div>
                       </div>
                       <div class="col-xxl-6 col-xl-6 col-12">
                         <input type="text" name="subject" placeholder="Subject *">
+                        <div style="color:red;" class="error_subject"></div>
                       </div>
                     </div>
                     <div class="row g-3">
                       <div class="col-12">
                         <textarea name="message" placeholder="Messages *"></textarea>
+                        <div style="color:red;" class="error_message"></div>
                       </div>
                     </div>
                     <div class="row g-3">
                       <div class="col-12">
+                        <div style="color:red;" class="error"></div>
+                        <div style="color:green;" class="success"></div>
                         <div class="btn_wrapper">
                           <button class="wc-btn-primary btn-hover btn-item"><span></span> Send <br>Messages <i
                               class="fa-solid fa-arrow-right"></i></button>
@@ -322,6 +329,88 @@
   <script src="assets/js/vanilla-tilt.js"></script>
   <script src="assets/js/jquery.meanmenu.min.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <script>
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const email = document.querySelector('input[name="email"]').value;
+      const name = document.querySelector('input[name="name"]').value;
+      const message = document.querySelector('textarea[name="message"]').value;
+      const phone = document.querySelector('input[name="phone"]').value;
+      const subject = document.querySelector('input[name="subject"]').value;
+      const error = document.querySelector('.error');
+      const success = document.querySelector('.success');
+      const errors = {};
+
+
+      if (!name) {
+        document.querySelector('.error_name').innerHTML = 'Please enter your name'
+      } else {
+        document.querySelector('.error_name').innerHTML = ''
+      }
+
+      if (!phone) {
+        document.querySelector('.error_phone').innerHTML = 'Please enter your phone number'
+      } else {
+        document.querySelector('.error_phone').innerHTML = ''
+      }
+
+      if (!message) {
+        document.querySelector('.error_message').innerHTML = 'Please enter your message'
+      } else {
+        document.querySelector('.error_message').innerHTML = ''
+      }
+
+      if (!subject) {
+        document.querySelector('.error_subject').innerHTML = 'Please enter your subject'
+      } else {
+        document.querySelector('.error_subject').innerHTML = ''
+      }
+
+      if (!email) {
+        document.querySelector('.error_email').innerHTML = 'Please enter your email address'
+      }
+
+      if (!email.includes('@')) {
+        document.querySelector('.error_email').innerHTML = 'Please enter a valid email address'
+      } else {
+        document.querySelector('.error_email').innerHTML = ''
+      }
+
+      if (!name || !phone || !message || !subject || !email || !email.includes('@')) {
+        return
+      }
+
+      const response = await fetch('http://localhost:5000/api/contact-us', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          name,
+          message,
+          phone,
+          subject
+        })
+      });
+
+      const data = await response.json();
+      if (data.success === false) {
+        error.innerHTML = data.message ?? 'Something went wrong, please try again later'
+        return
+      }
+
+      error.innerHTML = '';
+      document.querySelector('input[name="email"]').value = '';
+      document.querySelector('input[name="name"]').value = '';
+      document.querySelector('textarea[name="message"]').value = '';
+      document.querySelector('input[name="phone"]').value = '';
+      document.querySelector('input[name="subject"]').value = '';
+      success.innerHTML = data.message ?? 'Your message has been sent successfully';
+    }
+  </script>
 
 </body>
 
