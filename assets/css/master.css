@@ -5001,6 +5001,7 @@ img {
   width: 100%;
   top: 0;
   z-index: 99;
+  background: #121212;
 }
 .header__area-3 {
   position: fixed;
