@@ -5857,35 +5857,30 @@ img {
 }
 .hero__area-2 .hero2-shape {
   position: absolute;
-  left: 30%;
+  left: 50%;
   top: 41%;
-  max-width: 41%;
+  max-width: 20%;
   overflow: hidden;
+  transform: translateX(-65%);
 }
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+@media only screen and (min-width: 1200px) and (max-width: 1450px) {
   .hero__area-2 .hero2-shape {
     top: 37%;
-    left: 33%;
-    max-width: 36%;
+    max-width: 12%;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .hero__area-2 .hero2-shape {
-    top: 32%;
-    left: 31%;
-    max-width: 40%;
+    display: none;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .hero__area-2 .hero2-shape {
-    left: 30%;
-    top: 34%;
-    max-width: 40%;
+    display: none;
   }
 }
 @media only screen and (max-width: 767px) {
   .hero__area-2 .hero2-shape {
-    left: 5%;
     top: 30%;
     max-width: 90%;
   }
@@ -5959,6 +5954,11 @@ img {
   background-image: url(../imgs/shape/10.png);
   background-repeat: no-repeat;
   background-position: right top;
+}
+@media (min-width: 1350px){
+  .hero__area-2 .sec-title-wrapper .bg-shape {
+    background-position: 86% 3%;
+  }
 }
 .hero__area-3 {
   padding-top: 190px;
