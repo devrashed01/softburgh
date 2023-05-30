@@ -10681,6 +10681,7 @@ img {
   position: relative;
   z-index: 1;
   margin-left: 1px;
+  place-items: center;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .brand__list, .brand__list-3, .brand__list-2 {
@@ -10754,6 +10755,10 @@ img {
 }
 .brand__item-2 {
   text-align: center;
+}
+
+.brand__item-2 img {
+  max-width: 150px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .brand__item-2 {
@@ -30048,3 +30053,5 @@ body {
   border-left: 1px solid var(--secondary);
 }
 /*# sourceMappingURL=master.css.map */
+
+
