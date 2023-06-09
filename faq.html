@@ -355,7 +355,7 @@
         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
           <div class="footer__subscribe-2">
             <div id="newsletter">
-              <form onsubmit="handleSubmit(event)" id="newsletter">
+              <form onsubmit="handleSubscribe(event)" id="newsletter">
                 <input type="text" name="email" placeholder="Enter your email" />
                 <div style="color:red;" class="error"></div>
                 <div style="color:green;" class="success"></div>
@@ -418,6 +418,44 @@
   <script src="assets/js/jquery.meanmenu.min.js"></script>
   <script src="assets/js/main.js"></script>
 
+  <script>
+    async function handleSubscribe(e) {
+      e.preventDefault();
+      const email = document.querySelector('input[name="email"]').value;
+      const error = document.querySelector('.error');
+      const success = document.querySelector('.success');
+
+      if (!email) {
+        error.innerHTML = 'Please enter your email address'
+        return
+      }
+
+      if (!email.includes('@')) {
+        error.innerHTML = 'Please enter a valid email address'
+        return
+      }
+
+      const response = await fetch('https://telibot-nodejs-v2qi.vercel.app/api/send-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email
+        })
+      });
+      const data = await response.json();
+      console.log(data, 'data')
+      if (data.success === false) {
+        error.innerHTML = data.message ?? 'Something went wrong, please try again later'
+        return
+      }
+
+      document.querySelector('input[name="email"]').value = '';
+      error.innerHTML = '';
+      success.innerHTML = data.message ?? 'Thank you for subscribing!';
+    }
+  </script>
 
 </body>
 
