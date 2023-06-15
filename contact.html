@@ -357,11 +357,15 @@
       if (!email) {
         error.innerHTML = 'Please enter your email address'
         return
+      } else {
+        error.innerHTML = ''
       }
 
       if (!email.includes('@')) {
         error.innerHTML = 'Please enter a valid email address'
         return
+      } else {
+        error.innerHTML = ''
       }
 
       const response = await fetch('https://telibot-nodejs-v2qi.vercel.app/api/send-message', {
