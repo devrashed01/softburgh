@@ -916,7 +916,7 @@
         })
       });
       const data = await response.json();
-      console.log(data, 'data')
+
       if (data.success === false) {
         error.innerHTML = data.message ?? 'Something went wrong, please try again later'
         return
@@ -979,7 +979,7 @@
             postItem.innerHTML = `
                 <article class="blog__item-2">
                   <div class="blog__img-wrapper">
-                    <a href="blog-details.html?slug=${post.slug}">
+                    <a href="blog-details.html?id=${post.id}">
                       <div class="img-box">
                         <img class="image-box__item" src="${post.imageSmall.url}" alt="Blog Thumbnail" />
                         <img class="image-box__item" src="${post.imageSmall.url}" alt="BLog Thumbnail" />
@@ -990,7 +990,7 @@
               post.createdAt
             ).toLocaleDateString()}</h4>
                   <h5>
-                    <a href="blog-details.html?slug=${post.slug}" class="blog__title-2">${post.title}</a>
+                    <a href="blog-details.html?id=${post.id}" class="blog__title-2">${post.title}</a>
                   </h5>
                 </article>
         `;

@@ -446,7 +446,7 @@
         })
       });
       const data = await response.json();
-      console.log(data, 'data')
+
       if (data.success === false) {
         error.innerHTML = data.message ?? 'Something went wrong, please try again later'
         return
@@ -460,9 +460,10 @@
 
 
   <script>
+    const id = new URLSearchParams(window.location.search).get('id');
     const query = `
     query MyQuery {
-      blogModel(where: {id: "clit8hy7906l10bo23wkqhm9c"}) {
+      blogModel(where: {id: "${id}"}) {
         id
         title
         imageLarge {
@@ -498,7 +499,6 @@
         .then((res) => res.json())
         .then((res) => {
           const post = res.data.blogModel;
-          console.log(post, 'post')
           blogDetails.innerHTML = `
           <div class="col-xxl-8 col-xl-10 offset-xxl-2 offset-xl-1">
                 <div class="blog__detail-top">

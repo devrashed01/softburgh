@@ -848,7 +848,6 @@
 
     if (service_items) {
       service_items.forEach((image, i) => {
-        console.log(service_images[i].img);
         let tl = gsap.timeline({
           scrollTrigger: {
             trigger: image,
@@ -1319,7 +1318,6 @@
   } else {
     var hero_btn = document.querySelector(".hero__text-2 #btn_wrapper");
   }
-  console.log(hero_btn);
   tHero.from(
     hero_btn,
     {
@@ -3131,7 +3129,6 @@
         ".hover_8_img"
       ).style.transform = `translate(${dx}px, ${dy}px)`;
 
-      console.log(event.pageX);
     }
     hover_8_wrap[0].addEventListener("mousemove", (event) => {
       setInterval(showCase8Func(event, hover_8_wrap), 1000);

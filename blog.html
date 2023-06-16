@@ -336,7 +336,7 @@
         })
       });
       const data = await response.json();
-      console.log(data, 'data')
+
       if (data.success === false) {
         error.innerHTML = data.message ?? 'Something went wrong, please try again later'
         return
@@ -397,7 +397,7 @@
             postItem.innerHTML = `
                 <article class="blog__item">
                   <div class="blog__img-wrapper">
-                    <a href="blog-details.html?slug=${post.slug}">
+                    <a href="blog-details.html?id=${post.id}">
                       <div class="img-box">
                         <img class="image-box__item" src="${post.imageSmall.url}" alt="Blog Thumbnail">
                         <img class="image-box__item" src="${post.imageSmall.url}" alt="BLog Thumbnail">
@@ -407,8 +407,8 @@
                   <h4 class="blog__meta">${post.categories.map(tag => tag.name)} . ${new Date(
               post.createdAt
             ).toLocaleDateString()}</h4>
-                  <h5><a href="blog-details.html?slug=${post.slug}" class="blog__title">${post.title}</a></h5>
-                  <a href="blog-details.html?slug=${post.slug}" class="blog__btn">Read More <span><i
+                  <h5><a href="blog-details.html?id=${post.id}" class="blog__title">${post.title}</a></h5>
+                  <a href="blog-details.html?id=${post.id}" class="blog__btn">Read More <span><i
                         class="fa-solid fa-arrow-right"></i></span></a>
                 </article>
           `;
