@@ -30055,3 +30055,12 @@ body {
 /*# sourceMappingURL=master.css.map */
 
 
+.hoveft {
+  opacity: 0.5;
+  filter: grayscale(100%);
+}
+
+.hoveft:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
