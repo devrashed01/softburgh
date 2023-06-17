@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*-----------------------------------------------------------------------------------
 
-  Theme Name: Axtra - Digital Agency HTML5 Template
+  Theme Name: SoftBurgh - Digital Agency HTML5 Template
   Author: Crowdyflow
   Support: habib.crowdyflow@gmail.com
   Description: BUILDY – is a  Constructor HTML5 template that comes with high-quality 3 Pre build Home Pages and many built-in awesome inner pages  which are perfect for any creative agencies, designers, digital agencies, freelancers, developers, designers, marketing, startup, blog and portfolio.
@@ -19058,7 +19058,7 @@ img {
 
 .client__area-8 {
   background-color: var(--black-2);
-  background-image: url("../imgs/essential-img/bg-axtra.png");
+  background-image: url("../imgs/essential-img/bg-SoftBurgh.png");
   padding-top: 150px;
   padding-bottom: 140px;
 }
@@ -27177,7 +27177,7 @@ body {
   height: 100vh;
   background-repeat: repeat;
   background-position: top left;
-  background-image: url(../imgs/essential-img/bg-axtra.png);
+  background-image: url(../imgs/essential-img/bg-SoftBurgh.png);
 }
 
 .portfolio__area-11 {
