@@ -973,7 +973,7 @@
         .then((res) => res.json())
         .then((res) => {
           const posts = res.data.blogModels;
-          posts.forEach((post) => {
+          posts.slice(3).forEach((post) => {
             const postItem = document.createElement("div");
             postItem.classList.add("col-xxl-4", "col-xl-4", "col-lg-4", "col-md-4");
             postItem.innerHTML = `
