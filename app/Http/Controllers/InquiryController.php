@@ -28,9 +28,8 @@ class InquiryController extends Controller
         $inquiry->save();
 
         // mail to admin
-        $adminEmail = "yasirarafat.dev@gmail.com";
-        
-        Mail::to($adminEmail)->send(new ContactMail($request));
+        // Mail::to("yasirarafat.dev@gmail.com")->send(new ContactMail($request));
+        Mail::to("support@softburgh.com")->send(new ContactMail($request));
 
         return back()->withSuccess('Inquiry Submitted Successfully!');
     }
@@ -38,7 +37,7 @@ class InquiryController extends Controller
     {
 
         $this->validate($request, [
-            "email" => ['required','unique:news_letters', 'regex:/^.+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/', 'string', 'email', 'max:255'],
+            "email" => ['required', 'unique:news_letters', 'regex:/^.+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/', 'string', 'email', 'max:255'],
         ]);
 
         $newsletter = new NewsLetter();
